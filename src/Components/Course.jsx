@@ -1,3 +1,6 @@
+import ProgressBar from "./ProgressBar"
+import "../CSS/course.css"
+
 function Course(){
     return(
         <div className="course-card">

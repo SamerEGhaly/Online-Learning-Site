@@ -8,3 +8,5 @@ function ProgressBar(){
         </div>
     )
 }
+
+export default ProgressBar
