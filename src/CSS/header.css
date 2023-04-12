@@ -1,0 +1,64 @@
+.nav-bar{
+    width: 100%;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title{
+    font-family: "Kohinoor Bangla";
+    font-weight: 700;
+    font-size: 2.5rem;
+
+    background: linear-gradient(181.05deg, #17ACAC 0.9%, #000000 294.55%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.nav-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    gap: 4rem;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #444444;
+}
+
+.nav-buttons > li{
+    display: inline-block;
+}
+
+.login-register{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    font-family: Inter, sans-serif;
+}
+
+.login{
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #2C7575;
+    text-decoration-line: underline;
+}
+
+.register{
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: white;
+    background: #0E8585;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+
+}
