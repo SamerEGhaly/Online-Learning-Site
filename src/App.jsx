@@ -23,6 +23,8 @@ function App() {
       <main>
         <section className="landing-page">
           <input onChange={handleSearchInput} type="text" className="search-box" name="searchBox" placeholder="Search for courses" input={searchText}/>
+          <p>Explore what professionals like you are learning the most</p>
+          <button className="visitCourses">Visit Courses</button>
         </section>
       </main>
     </div>
