@@ -2,7 +2,7 @@ import "../CSS/progressBar.css"
 
 function ProgressBar(){
 
-    const progress = 70;
+    const progress = 20;
     const progressStyle = {
         backgroundColor: "#306EE5",
         width: `${progress}%`,
