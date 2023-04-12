@@ -1,11 +1,15 @@
 import Course from "./Components/Course"
+import Header from "./Components/Header"
 
 function App() {
 
   return (
-    <main className="app">
+    <div className="main-container">
+      <Header/>
+      <main>
       
-    </main>
+      </main>
+    </div>
   )
 }
 
