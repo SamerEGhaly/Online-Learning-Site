@@ -24,22 +24,26 @@ function App() {
               <option selected value="intermediate">Intermediate</option>
               <option value="advanced">Advanced</option>
             </select>
-            <label htmlFor="free-courses-filter">
-              <input type="checkbox" name="freeCoursesFilter" id="free-courses-filter" />
+            <label htmlFor="free-courses-checkbox" className="checkbox-filter">
+              <input type="checkbox" name="freeCoursesFilter" id="free-courses-checkbox" />
+              <div className="custom-checkbox"><img src="/src/assets/Images/white-checkmark.png" alt="checkmark" id="checkmark-image" /></div>
               Free Courses
             </label>
-            <label htmlFor="paid-courses-filter">
-              <input type="checkbox" name="paidCoursesFilter" id="paid-courses-filter" />
+            <label htmlFor="paid-courses-checkbox" className="checkbox-filter">
+              <input type="checkbox" name="paidCoursesFilter" id="paid-courses-checkbox" />
+              <div className="custom-checkbox"><img src="/src/assets/Images/white-checkmark.png" alt="checkmark" id="checkmark-image" /></div>
               Paid Courses
             </label>
-            <label htmlFor="sort-filter">Sort by: </label>
-            <select name="sortList" id="sort-filter" >
-              <option selected value="highestRating">Highest Rating</option>
-              <option value="lowestRating">Lowest Rating</option>
-              <option value="highestPrice">Highest Price</option>
-              <option value="lowestPrice">Lowest Price</option>
-              <option value="mostViewed">Most Viewed</option>
-            </select>
+            <label htmlFor="sort-filter">
+              Sort by: 
+              <select name="sortList" id="sort-filter" >
+                <option selected value="highestRating">Highest Rating</option>
+                <option value="lowestRating">Lowest Rating</option>
+                <option value="highestPrice">Highest Price</option>
+                <option value="lowestPrice">Lowest Price</option>
+                <option value="mostViewed">Most Viewed</option>
+              </select>
+            </label>
           </div>
         </section>
       </main>
