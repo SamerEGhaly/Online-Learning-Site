@@ -19,7 +19,7 @@ function App() {
         <section className="popular-courses" aria-labelledby="popular-courses-title">
           <h2 id="popular-courses-title">Popular Courses</h2>
           <div className="popular-courses-filters">
-            <select name="courseLevelFilter" id="course-level-filter" className="course-level-list">
+            <select name="courseLevelFilter" id="course-level-filter" className="course-level-list list-filter">
               <option value="beginner">Beginner</option>
               <option selected value="intermediate">Intermediate</option>
               <option value="advanced">Advanced</option>
@@ -34,9 +34,9 @@ function App() {
               <div className="custom-checkbox"><img src="/src/assets/Images/white-checkmark.png" alt="checkmark" id="checkmark-image" /></div>
               Paid Courses
             </label>
-            <label htmlFor="sort-filter">
+            <label htmlFor="sort-filter" className="sort-list-label">
               Sort by: 
-              <select name="sortList" id="sort-filter" >
+              <select name="sortList" id="sort-filter" className="sort-list list-filter">
                 <option selected value="highestRating">Highest Rating</option>
                 <option value="lowestRating">Lowest Rating</option>
                 <option value="highestPrice">Highest Price</option>
