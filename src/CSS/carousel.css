@@ -1,0 +1,22 @@
+.carousel{
+    width: 100%;
+    overflow-x: scroll;
+    box-shadow: 1px 1px 10px 0px #00000040;
+}
+
+.carousel::-webkit-scrollbar{
+    display: none;
+}
+
+.container{
+    min-width: min-content;
+    display: flex;
+    gap: 1rem;
+    background-color: #F8F5F5;
+}
+
+.box{
+    width: 200px;
+    height: 200px;
+    background-color:grey;
+}

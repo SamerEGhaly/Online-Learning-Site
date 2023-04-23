@@ -2,6 +2,7 @@ import React from "react"
 import Course from "./Components/Course"
 import Header from "./Components/Header"
 import LandingPage from "./Components/LandingPage"
+import Carousel from "./Components/Carousel"
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
             </label>
           </div>
         </section>
+        <Carousel/>
       </main>
     </div>
   )
