@@ -1,0 +1,74 @@
+.course-card{
+    width: 289px;
+    height: 452px;
+    box-shadow: 1px 4px 5px 0px #00000040;
+    background-color: #F8F8F8;
+    position: relative;
+}
+
+.course-tag{
+    width: 5.5rem;
+    height: 1.5rem;
+    background-color: #CC0000;
+    color: white;
+    font: 700 0.8rem Inter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.course-details{
+    padding: 1rem 0.8rem;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: start;
+}
+
+.course-title{
+    color: #0A4A4A;
+}
+
+.course-duration{
+    font-size: 1.2rem;
+}
+
+.course-price{
+    font-size: 1.2rem;
+    color: #CC0000;
+}
+
+.course-platform{
+    display: block;
+    height: 1rem;
+}
+
+.enroll-button{
+    width: 133px;
+    height: 40px;
+    background-color: #178C8C;
+    border: none;
+    border-radius: 5px;
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: white;
+    display: block;
+    margin: 1rem auto;
+}
+
+.more-info-link{
+    position: absolute;
+    bottom: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #007E7E;
+}

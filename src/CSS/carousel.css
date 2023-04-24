@@ -1,6 +1,8 @@
 .carousel{
+    padding: 2rem 5rem;
     width: 100%;
     overflow-x: scroll;
+    background-color: #F8F5F5;
     box-shadow: 1px 1px 10px 0px #00000040;
 }
 
@@ -11,12 +13,6 @@
 .container{
     min-width: min-content;
     display: flex;
-    gap: 1rem;
-    background-color: #F8F5F5;
-}
-
-.box{
-    width: 200px;
-    height: 200px;
-    background-color:grey;
+    justify-content: space-evenly;
+    gap: 100px;
 }
