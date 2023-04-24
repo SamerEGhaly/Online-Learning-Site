@@ -62,3 +62,29 @@
     border-radius: 5px;
     box-shadow: 1px 1px 4px 0px #00000040;
 }
+
+.shopping-cart{
+    position: relative;
+}
+
+.shopping-cart-icon{
+    display: block;
+    height: 2.4rem;
+}
+
+.cart-items-count{
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #C5331E;
+    height: 19px;
+    width: 19px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top:0;
+    right: 0;
+    transform: translateX(50%);
+}
