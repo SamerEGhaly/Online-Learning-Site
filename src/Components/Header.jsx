@@ -18,10 +18,10 @@ function Header(){
                         Register
                     </button>
                 </div>
-                <div className="shopping-cart">
+                <a href="#" className="shopping-cart">
                     <img src="/src/assets/Images/shopping-cart.png" alt="" className="shopping-cart-icon" />
                     <div className="cart-items-count">2</div>
-                </div>
+                </a>
             </nav>
         </header>
     )
