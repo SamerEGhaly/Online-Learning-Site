@@ -15,4 +15,5 @@
     display: flex;
     justify-content: space-evenly;
     gap: 100px;
+    padding: 2rem;
 }
