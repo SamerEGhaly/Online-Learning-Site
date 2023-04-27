@@ -2,6 +2,7 @@ import React from "react"
 import Header from "./Components/Header"
 import LandingPage from "./Components/LandingPage"
 import PopularCourses from "./Components/PopularCourses"
+import CertificationCourses from "./Components/CertificationCourses"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <img src="/src/assets/Images/coursera-logo.png" alt="coursera logo" />
         </section>
         <PopularCourses/>
+        <CertificationCourses/>
       </main>
     </div>
   )

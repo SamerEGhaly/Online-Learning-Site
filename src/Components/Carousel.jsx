@@ -1,7 +1,7 @@
 import Course from "./Course"
 import "/src/CSS/carousel.css"
 
-function Carousel(){
+function Carousel(props){
     return(
         <div className="carousel">
             <div className="container">

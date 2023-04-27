@@ -3,6 +3,7 @@ import Carousel from "./Carousel"
 import "/src/CSS/popular-courses.css"
 
 function PopularCourses(){
+
     return(
         <section className="popular-courses" aria-labelledby="popular-courses-title">
           <h2 id="popular-courses-title">Popular Courses</h2>
