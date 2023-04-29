@@ -1,0 +1,50 @@
+.instructed-courses{
+    padding: 3rem 6rem;
+}
+
+#instructed-courses-title{
+    font-family: "Kohinoor Bangla";
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    color: #004949;
+    margin-bottom: 1.5rem;
+}
+
+.find-tutor{
+    display: flex;
+    margin-bottom: 3rem;
+}
+
+.find-tutor > p{
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: #A19F9F;
+    width: 75%;
+    margin-right: auto;
+}
+
+.find-tutor-button{
+    background-color: #178C8C;
+    padding: 0.5rem 1.2rem;
+    border: none;
+    border-radius: 0.3rem;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: white;
+}
+
+#popular-tutors-title{
+    font-family: Inter, sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #0E8585;
+}
+
+.tutors{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1.5rem 2rem;
+}
