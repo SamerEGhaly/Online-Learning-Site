@@ -1,3 +1,5 @@
+import Tutor from "./Tutor"
+
 function InstructedCourses(){
     return(
         <section className="instructed-courses">
@@ -6,6 +8,9 @@ function InstructedCourses(){
             <button className="find-tutor-button">Find A Tutor</button>
             <div className="popular-tutors">
                 <h3 id="popular-tutors-title">Meet Our Popular Tutors</h3>
+                <div className="tutors">
+                    <Tutor/>
+                </div>
             </div>
         </section>
     )

@@ -3,6 +3,7 @@ import Header from "./Components/Header"
 import LandingPage from "./Components/LandingPage"
 import PopularCourses from "./Components/PopularCourses"
 import CertificationCourses from "./Components/CertificationCourses"
+import InstructedCourses from "./Components/InstructedCourses"
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         </section>
         <PopularCourses/>
         <CertificationCourses/>
+        <InstructedCourses/>
       </main>
     </div>
   )
