@@ -1,0 +1,50 @@
+footer{
+    width: 100%;
+    padding: 2.5rem 4rem;
+    background-color: #184B4B;
+}
+
+.useful-links{
+    display: flex;
+    gap: 2rem;
+}
+
+.useful-links ul{
+    list-style: none;
+}
+
+.useful-links ul li{
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.useful-links a{
+    color: white;
+    text-decoration: none;
+}
+
+.social-media{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.follow{
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-decoration: underline;
+    color: white;
+    margin-right: 1rem;
+}
+
+.social-links{
+    display: flex;
+    gap: 2rem;
+}
+
+.social-links img{
+    height: 1rem;
+}

@@ -4,6 +4,7 @@ import LandingPage from "./Components/LandingPage"
 import PopularCourses from "./Components/PopularCourses"
 import CertificationCourses from "./Components/CertificationCourses"
 import InstructedCourses from "./Components/InstructedCourses"
+import Footer from "./Components/Footer"
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <PopularCourses/>
         <CertificationCourses/>
         <InstructedCourses/>
+        <Footer/>
       </main>
     </div>
   )
