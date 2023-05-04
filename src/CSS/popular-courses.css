@@ -3,9 +3,10 @@
   }
   
   #popular-courses-title{
-    font: 700 3rem "Kohinoor Bangla";
+    font: 700 2.5rem "Kohinoor Bangla";
     color: #004949;
     margin: 2rem 4rem 0;
+    padding-left: 2rem;
   }
   
   .popular-courses-filters{

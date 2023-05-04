@@ -10,8 +10,8 @@ function LandingPage(){
         const value = event.target.value
 
         if(name == "searchBox"){
-        setSearchText(value)
-        return true
+            setSearchText(value)
+            return true
         }
         return false
     }
