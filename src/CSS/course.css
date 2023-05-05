@@ -48,6 +48,24 @@
     height: 1rem;
 }
 
+.rating{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.star{
+    height: 1rem;
+}
+
+.reviews-count{
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: #868686;
+}
+
 .enroll-button{
     width: 133px;
     height: 40px;

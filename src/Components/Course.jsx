@@ -1,18 +1,50 @@
 import "../CSS/course.css"
 
-function Course(){
+function Course(props){
+
+    var platformLogo
+
+    switch (props.platform) {
+        case "cloud academy":
+            platformLogo = "/src/assets/Images/cloud-academy-logo.png"
+            break;
+        case "khan academy":
+            platformLogo = "/src/assets/Images/khan-academy-logo.png"
+            break;
+        case "coursera":
+            platformLogo = "/src/assets/Images/coursera-logo.png"
+            break;
+        case "udemy":
+            platformLogo = "/src/assets/Images/udemy-logo.png"
+            break;
+        default:
+            break;
+    }
+
+    const starsCount = parseFloat(props.stars)
+    var starsArray = []
+    const wholeStars = Math.floor(starsCount)
+    const halfStars = Math.ceil(starsCount - wholeStars)
+
+    for( let i = 0; i < wholeStars; i++){
+        starsArray.push(<img src="/src/assets/Images/star.png" className="star"/>)
+    }
+    if(halfStars > 0){
+        starsArray.push(<img src="/src/assets/Images/half-star.png" className="star"/>)
+    }
+
     return(
         <div className="course-card">
-            <img src="/src/assets/Images/black_289x210.png" alt="course thumbnail" className="course-thumbnail" />
+            <img src={props.thumbnail} alt="course thumbnail" className="course-thumbnail" />
             <div className="course-details">
-                <p className="course-tag">Popular</p>
-                <h2 className="course-title">Course Title</h2>
-                <p className="course-duration">Duration : 25mins</p>
-                <p className="course-price">$15.90</p>
-                <img src="/src/assets/Images/cloud-academy-logo.png" alt="platform logo" className="course-platform" />
+                <p className="course-tag">{props.tag}</p>
+                <h2 className="course-title">{props.title}</h2>
+                <p className="course-duration">Duration : {props.duration}</p>
+                <p className="course-price">{props.price == "free"? props.price : `$${props.price}`}</p>
+                <img src={platformLogo} alt="platform logo" className="course-platform" />
                 <div className="rating">
-                    <div className="stars"></div>
-                    <p className="reviews-count">(400)</p>
+                    <div className="stars">{starsArray}</div>
+                    <p className="reviews-count">({props.no_of_ratings})</p>
                 </div>
             </div>
                 <button className="enroll-button">Enroll Now</button>
