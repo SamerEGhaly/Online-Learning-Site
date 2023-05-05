@@ -1,5 +1,5 @@
 export default {
-    "courseData" : [
+    "data" : [
         {
             id: 0,
             title: "unconcious bias",
@@ -9,7 +9,8 @@ export default {
             stars: "4.5",
             no_of_ratings: "43435",
             tag: "popular",
-            thumbnail: "/src/assets/Images/black_289x210.png"
+            thumbnail: "/src/assets/Images/black_289x210.png",
+            certified: false
         },
         {
             id: 1,
@@ -20,7 +21,8 @@ export default {
             stars: "5",
             no_of_ratings: "30435",
             tag: "best seller",
-            thumbnail: "/src/assets/Images/black_289x210.png"
+            thumbnail: "/src/assets/Images/black_289x210.png",
+            certified: false
         },
         {
             id: 2,
@@ -31,7 +33,8 @@ export default {
             stars: "5",
             no_of_ratings: "28435",
             tag: "best seller",
-            thumbnail: "/src/assets/Images/black_289x210.png"
+            thumbnail: "/src/assets/Images/black_289x210.png",
+            certified: false
         },
         {
             id: 3,
@@ -42,7 +45,8 @@ export default {
             stars: "4.5",
             no_of_ratings: "24100",
             tag: "best seller",
-            thumbnail: "/src/assets/Images/black_289x210.png"
+            thumbnail: "/src/assets/Images/black_289x210.png",
+            certified: true
         },
         {
             id: 4,
@@ -53,7 +57,8 @@ export default {
             stars: "5",
             no_of_ratings: "18335",
             tag: "best seller",
-            thumbnail: "/src/assets/Images/black_289x210.png"
+            thumbnail: "/src/assets/Images/black_289x210.png",
+            certified: true
         },
         {
             id: 5,
@@ -64,7 +69,8 @@ export default {
             stars: "5",
             no_of_ratings: "12434",
             tag: "best seller",
-            thumbnail: "/src/assets/Images/black_289x210.png"
+            thumbnail: "/src/assets/Images/black_289x210.png",
+            certified: true
         }
     ]
 }

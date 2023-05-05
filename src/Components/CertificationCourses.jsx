@@ -1,7 +1,29 @@
 import "/src/CSS/certification-courses.css"
 import Carousel from "./Carousel"
+import Course from "./Course"
 
-function CertificationCourses(){
+function CertificationCourses(props){
+
+  const carouselItems = props.courseDatabase.map((item) => {
+    
+    if(item.certified){
+      return(
+        <Course 
+          key={item.id}
+          title={item.title}
+          duration={item.duration}
+          price={item.price}
+          platform={item.platform}
+          stars={item.stars}
+          no_of_ratings={item.no_of_ratings}
+          tag={item.tag}
+          thumbnail={item.thumbnail}
+          certified={item.certified}
+        />
+      )
+    }
+  })
+  
     return(
         <section className="certification-courses">
             <h2 id="certification-courses-title">Certifications Courses</h2>
@@ -27,7 +49,7 @@ function CertificationCourses(){
               </select>
             </label>
           </div>
-          <Carousel/>
+          <Carousel items={carouselItems}/>
         </section>
     )
 }

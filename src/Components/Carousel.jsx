@@ -5,10 +5,7 @@ function Carousel(props){
     return(
         <div className="carousel">
             <div className="container">
-                <Course/>
-                <Course/>
-                <Course/>
-                <Course/>
+                {props.items}
             </div>
         </div>
     )

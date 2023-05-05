@@ -1,8 +1,26 @@
 import React from "react"
 import Carousel from "./Carousel"
+import Course from "./Course"
 import "/src/CSS/popular-courses.css"
 
-function PopularCourses(){
+function PopularCourses(props){
+
+    const carouselItems = props.courseDatabase.map((item) => {
+      return(
+        <Course 
+          key={item.id}
+          title={item.title}
+          duration={item.duration}
+          price={item.price}
+          platform={item.platform}
+          stars={item.stars}
+          no_of_ratings={item.no_of_ratings}
+          tag={item.tag}
+          thumbnail={item.thumbnail}
+          certified={item.certified}
+        />
+      )
+    })
 
     return(
         <section className="popular-courses" aria-labelledby="popular-courses-title">
@@ -34,7 +52,7 @@ function PopularCourses(){
               </select>
             </label>
           </div>
-          <Carousel/>
+          <Carousel items={carouselItems}/>
         </section>
     )
 }
