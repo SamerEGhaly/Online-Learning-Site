@@ -21,16 +21,20 @@ function Course(props){
             break;
     }
 
-    const starsCount = parseFloat(props.stars)
-    var starsArray = []
-    const wholeStars = Math.floor(starsCount)
-    const halfStars = Math.ceil(starsCount - wholeStars)
+    function getStars(){
+        const starsCount = parseFloat(props.stars)
+        var starsArray = []
+        const wholeStars = Math.floor(starsCount)
+        const halfStars = Math.ceil(starsCount - wholeStars)
 
-    for( let i = 0; i < wholeStars; i++){
-        starsArray.push(<img src="/src/assets/Images/star.png" className="star"/>)
-    }
-    if(halfStars > 0){
-        starsArray.push(<img src="/src/assets/Images/half-star.png" className="star"/>)
+        for( let i = 0; i < wholeStars; i++){
+            starsArray.push(<img src="/src/assets/Images/star.png" className="star"/>)
+        }
+        if(halfStars > 0){
+            starsArray.push(<img src="/src/assets/Images/half-star.png" className="star"/>)
+        }
+
+        return starsArray
     }
 
     return(
@@ -43,8 +47,8 @@ function Course(props){
                 <p className="course-price">{props.price == "free"? props.price : `$${props.price}`}</p>
                 <img src={platformLogo} alt="platform logo" className="course-platform" />
                 <div className="rating">
-                    <div className="stars">{starsArray}</div>
-                    <p className="reviews-count">({props.no_of_ratings})</p>
+                    <div className="stars">{getStars()}</div>
+                    <p className="reviews-count">({parseInt(props.no_of_ratings).toLocaleString()})</p>
                 </div>
             </div>
                 <button className="enroll-button">Enroll Now</button>
