@@ -10,7 +10,8 @@ export default {
             no_of_ratings: "43435",
             tag: "popular",
             thumbnail: "/src/assets/Images/black_289x210.png",
-            certified: false
+            certified: false,
+            level: "intermediate"
         },
         {
             id: 1,
@@ -18,11 +19,12 @@ export default {
             duration: "50mins",
             price: "15.90",
             platform: "khan academy",
-            stars: "5",
+            stars: "2",
             no_of_ratings: "30435",
             tag: "best seller",
             thumbnail: "/src/assets/Images/black_289x210.png",
-            certified: false
+            certified: false,
+            level: "intermediate"
         },
         {
             id: 2,
@@ -30,11 +32,12 @@ export default {
             duration: "1hr 12mins",
             price: "10.90",
             platform: "khan academy",
-            stars: "5",
+            stars: "2.5",
             no_of_ratings: "28435",
             tag: "best seller",
             thumbnail: "/src/assets/Images/black_289x210.png",
-            certified: false
+            certified: false,
+            level: "intermediate"
         },
         {
             id: 3,
@@ -42,11 +45,12 @@ export default {
             duration: "25mins",
             price: "19.90",
             platform: "cloud academy",
-            stars: "4.5",
+            stars: "1",
             no_of_ratings: "24100",
             tag: "best seller",
             thumbnail: "/src/assets/Images/black_289x210.png",
-            certified: true
+            certified: true,
+            level: "intermediate"
         },
         {
             id: 4,
@@ -58,7 +62,8 @@ export default {
             no_of_ratings: "18335",
             tag: "best seller",
             thumbnail: "/src/assets/Images/black_289x210.png",
-            certified: true
+            certified: true,
+            level: "intermediate"
         },
         {
             id: 5,
@@ -66,11 +71,12 @@ export default {
             duration: "1hr 12mins",
             price: "10.90",
             platform: "khan academy",
-            stars: "5",
+            stars: "4",
             no_of_ratings: "12434",
             tag: "best seller",
             thumbnail: "/src/assets/Images/black_289x210.png",
-            certified: true
+            certified: true,
+            level: "intermediate"
         }
     ]
 }

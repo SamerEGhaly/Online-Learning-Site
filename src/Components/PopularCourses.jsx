@@ -5,77 +5,150 @@ import "/src/CSS/popular-courses.css"
 
 function PopularCourses(props){
 
-    const [filters, setFilters] = React.useState({
-      "courseLevelFilter" : "intermediate",
+    const [listfilters, setListFilters] = React.useState({
+      "courseLevelFilter" : "intermediate"
+    })
+
+    const [booleanFilters, setBooleanFilters] = React.useState({
       "paidCoursesFilter" : false,
       "freeCoursesFilter" : false
     })
 
-    console.log(filters)
+    const [sortValue, setSortValue] = React.useState("highestRating")
 
-    function modifyFilters(event){
-      const name = event.target.name
-      const value = event.target.value
-      const type = event.target.type
-      if(type == "checkbox"){
-        setFilters(oldFilters => {
-          return({
-            ...oldFilters,
-            [name]: event.target.checked
-          })
-        })
+    console.log(sortValue)
+
+    function handleSort(event){ // callback function that modifies the sortValue state
+      setSortValue(event.target.value)
+    }
+
+    function sortCourses(){
+      if(sortValue == "highestRating"){
+        for(let i = 0; i < carouselItems.length; i++){
+          for(let j = 0, k = 1; k < carouselItems.length - i; j++, k++){
+            var currentRating = parseFloat(carouselItems[j].props.stars)
+            var nextRating = parseFloat(carouselItems[k].props.stars)
+            if(currentRating < nextRating){
+              var temp = carouselItems[j]
+              carouselItems[j] = carouselItems[k]
+              carouselItems[k] = temp
+            }
+          }
+        }
       }
-      else{
-        setFilters(oldFilters => {
-          return({
-            ...oldFilters,
-            [name]: value
-          })
-        })
+      else if(sortValue == "lowestRating"){
+        for(let i = 0; i < carouselItems.length; i++){
+          for(let j = 0, k = 1; k < carouselItems.length - i; j++, k++){
+            var currentRating = parseFloat(carouselItems[j].props.stars)
+            var nextRating = parseFloat(carouselItems[k].props.stars)
+            if(currentRating > nextRating){
+              var temp = carouselItems[j]
+              carouselItems[j] = carouselItems[k]
+              carouselItems[k] = temp
+            }
+          }
+        }
       }
     }
 
-    const carouselItems = props.courseDatabase.map((item) => {
+    function getCheckedBoxes(){
+      var checkedBoxes = []
+      for (const key in booleanFilters) {
+        if (Object.hasOwnProperty.call(booleanFilters, key)) {
+          if(booleanFilters[key]){
+            checkedBoxes.push(key)
+          }
+        }
+      }
+      return checkedBoxes
+    }
 
-      return(
-        <Course 
-          key={item.id}
-          title={item.title}
-          duration={item.duration}
-          price={item.price}
-          platform={item.platform}
-          stars={item.stars}
-          no_of_ratings={item.no_of_ratings}
-          tag={item.tag}
-          thumbnail={item.thumbnail}
-          certified={item.certified}
-        />
-      )
+    function modifyBooleanFilters(event){
+      const name = event.target.name
+      setBooleanFilters(oldFilters => {
+        return({
+          ...oldFilters,
+          [name]: event.target.checked
+        })
+      })
+    }
+
+    function modifyListFilters(event){
+      const name = event.target.name
+      const value = event.target.value
+      setListFilters(oldFilters => {
+        return({
+          ...oldFilters,
+          [name]: value
+        })
+      })
+    }
+
+    const carouselItems = props.courseDatabase.map((item) => {
+      
+      var showCourse = false // a flag to decide to show or hide the course
+      const checkedBoxes = getCheckedBoxes() // get a list of checked boxes names
+
+      if(listfilters["courseLevelFilter"] == item.level){
+        if(checkedBoxes.length > 0){
+          if(booleanFilters["freeCoursesFilter"] && item.price == "free"){
+            showCourse = true;
+          }
+          else if(booleanFilters["paidCoursesFilter"] && item.price !="free"){
+            showCourse = true;
+          }
+        }
+        else {
+          showCourse = true;
+        }
+      }
+      else{
+        showCourse = false;
+      }
+
+      if(showCourse){
+        return(
+          <Course 
+            key={item.id}
+            title={item.title}
+            duration={item.duration}
+            price={item.price}
+            platform={item.platform}
+            stars={item.stars}
+            no_of_ratings={item.no_of_ratings}
+            tag={item.tag}
+            thumbnail={item.thumbnail}
+            certified={item.certified}
+          />
+        )
+      }
     })
+
+    sortCourses()
 
     return(
         <section className="popular-courses" aria-labelledby="popular-courses-title">
           <h2 id="popular-courses-title">Popular Courses</h2>
           <div className="popular-courses-filters">
-            <select onChange={modifyFilters}  name="courseLevelFilter" id="course-level-filter" className="course-level-list list-filter">
+            <select onChange={modifyListFilters}  name="courseLevelFilter" id="course-level-filter" className="course-level-list list-filter">
               <option value="beginner">Beginner</option>
               <option selected value="intermediate">Intermediate</option>
               <option value="advanced">Advanced</option>
             </select>
             <label htmlFor="free-courses-checkbox" className="checkbox-filter">
-              <input onChange={modifyFilters} type="checkbox" name="freeCoursesFilter" id="free-courses-checkbox" />
+              <input onChange={modifyBooleanFilters} type="checkbox" name="freeCoursesFilter" id="free-courses-checkbox" />
               <div className="custom-checkbox"><img src="/src/assets/Images/white-checkmark.png" alt="checkmark" id="checkmark-image" /></div>
               Free Courses
             </label>
             <label htmlFor="paid-courses-checkbox" className="checkbox-filter">
-              <input onChange={modifyFilters} type="checkbox" name="paidCoursesFilter" id="paid-courses-checkbox" />
+              <input onChange={modifyBooleanFilters} type="checkbox" name="paidCoursesFilter" id="paid-courses-checkbox" />
               <div className="custom-checkbox"><img src="/src/assets/Images/white-checkmark.png" alt="checkmark" id="checkmark-image" /></div>
               Paid Courses
             </label>
             <label htmlFor="sort-filter" className="sort-list-label">
               Sort by: 
-              <select name="sortList" id="sort-filter" className="sort-list list-filter">
-                <option selected value="highestRating">Highest Rating</option>
+              <select onChange={handleSort} value={sortValue} name="sortList" id="sort-filter" className="sort-list list-filter">
+                <option value="highestRating">Highest Rating</option>
                 <option value="lowestRating">Lowest Rating</option>
                 <option value="highestPrice">Highest Price</option>
                 <option value="lowestPrice">Lowest Price</option>
