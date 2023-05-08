@@ -84,30 +84,37 @@ function PopularCourses(props){
       })
     }
 
-    const carouselItems = props.courseDatabase.map((item) => {
-      
-      var showCourse = false // a flag to decide to show or hide the course
-      const checkedBoxes = getCheckedBoxes() // get a list of checked boxes names
+    const checkedBoxes = getCheckedBoxes() // get a list of checked boxes names
+    
+    function getCarouselItems(){
+      const courseDatabase = props.courseDatabase
+      var carouselItems = []
+      var showCourse = false
+      var item
+      for(let i = 0; i < courseDatabase.length; i++){
 
-      if(listfilters["courseLevelFilter"] == item.level){
-        if(checkedBoxes.length > 0){
-          if(booleanFilters["freeCoursesFilter"] && item.price == "free"){
-            showCourse = true;
+        showCourse = false
+        item = courseDatabase[i]
+
+        if(listfilters["courseLevelFilter"] == item.level){
+          if(checkedBoxes.length > 0){
+            if(booleanFilters["freeCoursesFilter"] && item.price == "free"){
+              showCourse = true;
+            }
+            else if(booleanFilters["paidCoursesFilter"] && item.price !="free"){
+              showCourse = true;
+            }
           }
-          else if(booleanFilters["paidCoursesFilter"] && item.price !="free"){
+          else {
             showCourse = true;
           }
         }
-        else {
-          showCourse = true;
+        else{
+          showCourse = false;
         }
-      }
-      else{
-        showCourse = false;
-      }
-
-      if(showCourse){
-        return(
+  
+        if(showCourse){
+          carouselItems.push(
           <Course 
             key={item.id}
             title={item.title}
@@ -120,9 +127,14 @@ function PopularCourses(props){
             thumbnail={item.thumbnail}
             certified={item.certified}
           />
-        )
-      }
-    })
+          )
+        }
+      } // end of for loop
+
+      return(carouselItems)
+    }
+
+    const carouselItems = getCarouselItems()
 
     sortCourses()
 
