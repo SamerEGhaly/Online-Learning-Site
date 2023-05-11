@@ -4,7 +4,6 @@ import Course from "./Course"
 import "/src/CSS/popular-courses.css"
 import coursesDatabase from "/src/Data/courseData"
 
-
 function PopularCourses(){
 
     const [listFilters, setListFilters] = React.useState({
@@ -17,47 +16,6 @@ function PopularCourses(){
     })
 
     const [sortValue, setSortValue] = React.useState("highestRating")
-
-    function getCheckedBoxes(){ // loops over the booleanFilters state and returns an array of checked boxes names
-      var checkedBoxes = []
-      for (const key in booleanFilters) {
-        if (Object.hasOwnProperty.call(booleanFilters, key)) {
-          if(booleanFilters[key]){
-            checkedBoxes.push(key)
-          }
-        }
-      }
-      return checkedBoxes
-    }
-    
-    function sortCourses(){ // sorts the carouselItems array according to the sortValue state
-      if(sortValue == "highestRating"){
-        for(let i = 0; i < carouselItems.length; i++){
-          for(let j = 0, k = 1; k < carouselItems.length - i; j++, k++){
-            var currentRating = parseFloat(carouselItems[j].props.stars)
-            var nextRating = parseFloat(carouselItems[k].props.stars)
-            if(currentRating < nextRating){
-              var temp = carouselItems[j]
-              carouselItems[j] = carouselItems[k]
-              carouselItems[k] = temp
-            }
-          }
-        }
-      }
-      else if(sortValue == "lowestRating"){
-        for(let i = 0; i < carouselItems.length; i++){
-          for(let j = 0, k = 1; k < carouselItems.length - i; j++, k++){
-            var currentRating = parseFloat(carouselItems[j].props.stars)
-            var nextRating = parseFloat(carouselItems[k].props.stars)
-            if(currentRating > nextRating){
-              var temp = carouselItems[j]
-              carouselItems[j] = carouselItems[k]
-              carouselItems[k] = temp
-            }
-          }
-        }
-      }
-    }
     
     function handleSort(event){ // callback function to handle sort list onChange events
       setSortValue(event.target.value)
@@ -83,60 +41,8 @@ function PopularCourses(){
         })
       })
     }
-    
-    function getCarouselItems(){  // returns an array of items to be passed to the carousel component
-      var carouselItems = []
-      var showCourse = false
-      var item
-      for(let i = 0; i < coursesDatabase.length; i++){
-    
-        showCourse = false
-        item = coursesDatabase[i]
-    
-        if(listFilters["courseLevelFilter"] == item.level){
-          if(checkedBoxes.length > 0){
-            if(booleanFilters["freeCoursesFilter"] && item.price == "free"){
-              showCourse = true;
-            }
-            else if(booleanFilters["paidCoursesFilter"] && item.price !="free"){
-              showCourse = true;
-            }
-          }
-          else {
-            showCourse = true;
-          }
-        }
-        else{
-          showCourse = false;
-        }
-    
-        if(showCourse){
-          carouselItems.push(
-          <Course 
-            key={item.id}
-            title={item.title}
-            duration={item.duration}
-            price={item.price}
-            platform={item.platform}
-            stars={item.stars}
-            no_of_ratings={item.no_of_ratings}
-            tag={item.tag}
-            thumbnail={item.thumbnail}
-            certified={item.certified}
-          />
-          )
-        }
-      } // end of for loop
-    
-      return(carouselItems)
-    }
-    
 
-    const checkedBoxes = getCheckedBoxes() // an array of checked boxes names
-
-    const carouselItems = getCarouselItems()
-
-    sortCourses()
+    const carouselItems = getCarouselItems(listFilters, booleanFilters, getCheckedBoxes(booleanFilters), sortValue)
 
     return(
         <section className="popular-courses" aria-labelledby="popular-courses-title">
@@ -172,5 +78,99 @@ function PopularCourses(){
         </section>
     )
 }
-
 export default PopularCourses
+
+// sorts the carouselItems array according to the sortValue state
+function sortItems(sortValue, carouselItems){
+  if(sortValue == "highestRating"){
+    for(let i = 0; i < carouselItems.length; i++){
+      for(let j = 0, k = 1; k < carouselItems.length - i; j++, k++){
+        var currentRating = parseFloat(carouselItems[j].props.stars)
+        var nextRating = parseFloat(carouselItems[k].props.stars)
+        if(currentRating < nextRating){
+          var temp = carouselItems[j]
+          carouselItems[j] = carouselItems[k]
+          carouselItems[k] = temp
+        }
+      }
+    }
+  }
+  else if(sortValue == "lowestRating"){
+    for(let i = 0; i < carouselItems.length; i++){
+      for(let j = 0, k = 1; k < carouselItems.length - i; j++, k++){
+        var currentRating = parseFloat(carouselItems[j].props.stars)
+        var nextRating = parseFloat(carouselItems[k].props.stars)
+        if(currentRating > nextRating){
+          var temp = carouselItems[j]
+          carouselItems[j] = carouselItems[k]
+          carouselItems[k] = temp
+        }
+      }
+    }
+  }
+}
+
+function getCheckedBoxes(booleanFilters){ // loops over the booleanFilters state and returns an array of checked boxes names
+  var checkedBoxes = []
+  for (const key in booleanFilters) {
+    if (Object.hasOwnProperty.call(booleanFilters, key)) {
+      if(booleanFilters[key]){
+        checkedBoxes.push(key)
+      }
+    }
+  }
+  return checkedBoxes
+}
+
+// a function that takes three inputs: an array of listFilters, an array of checked boxes names, and the item we want to show or hide. Then returns true if item passes the filters and false otherwise.
+function showItem(listFilters, booleanFilters, checkedBoxes, item){
+  if(listFilters["courseLevelFilter"] == item.level){
+    if(checkedBoxes.length > 0){
+      if(booleanFilters["freeCoursesFilter"] && item.price == "free"){
+        return(true)
+      }
+      else if(booleanFilters["paidCoursesFilter"] && item.price !="free"){
+        return(true)
+      }
+      else{
+        return(false)
+      }
+    }
+    else {
+      return(true)
+    }
+  }
+  else{
+    return(false)
+  }
+}
+
+// returns an array of items to be passed to the carousel component
+function getCarouselItems(listFilters, booleanFilters, checkedBoxes, sortValue){
+  var carouselItems = []
+  var item
+  for(let i = 0; i < coursesDatabase.length; i++){
+    item = coursesDatabase[i]
+
+    if(showItem(listFilters, booleanFilters, checkedBoxes, item)){
+      carouselItems.push(
+      <Course 
+        key={item.id}
+        title={item.title}
+        duration={item.duration}
+        price={item.price}
+        platform={item.platform}
+        stars={item.stars}
+        no_of_ratings={item.no_of_ratings}
+        tag={item.tag}
+        thumbnail={item.thumbnail}
+        certified={item.certified}
+      />
+      )
+    }
+  } // end of for loop
+
+  sortItems(sortValue, carouselItems)
+
+  return(carouselItems)
+}
