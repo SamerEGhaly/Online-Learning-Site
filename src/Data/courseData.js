@@ -1,5 +1,4 @@
-export default {
-    "data" : [
+export default [
         {
             id: 0,
             title: "unconcious bias",
@@ -79,4 +78,3 @@ export default {
             level: "intermediate"
         }
     ]
-}

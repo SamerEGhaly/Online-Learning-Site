@@ -2,8 +2,9 @@ import React from "react"
 import "/src/CSS/certification-courses.css"
 import Carousel from "./Carousel"
 import Course from "./Course"
+import coursesDatabase from "/src/Data/courseData"
 
-function CertificationCourses(props){
+function CertificationCourses(){
 
   const [sortValue, setSortValue] = React.useState("highestRating")
 
@@ -68,14 +69,13 @@ function CertificationCourses(props){
   }
 
   function getCarouselItems(){  // returns an array of items to be passed to the carousel component
-    const courseDatabase = props.courseDatabase
     var carouselItems = []
     var showCourse = false
     var item
-    for(let i = 0; i < courseDatabase.length; i++){
+    for(let i = 0; i < coursesDatabase.length; i++){
   
       showCourse = false
-      item = courseDatabase[i]
+      item = coursesDatabase[i]
   
       if(checkedBoxes.length > 0){
         if(booleanFilters["freeCertificationsFilter"] && item.price == "free"){

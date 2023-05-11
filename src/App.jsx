@@ -5,15 +5,8 @@ import PopularCourses from "./Components/PopularCourses"
 import CertificationCourses from "./Components/CertificationCourses"
 import InstructedCourses from "./Components/InstructedCourses"
 import Footer from "./Components/Footer"
-import CourseData from "./Data/CourseData"
 
 function App() {
-
-  const [courseDatabase, setCourseDatabase] = React.useState(getCourseData())
-
-  function getCourseData(){
-    return CourseData.data
-  }
 
   return (
     <div className="main-container">
@@ -26,8 +19,8 @@ function App() {
           <img src="/src/assets/Images/cloud-academy-logo.png" alt="cloud academy logo" />
           <img src="/src/assets/Images/coursera-logo.png" alt="coursera logo" />
         </section>
-        <PopularCourses courseDatabase={courseDatabase} />
-        <CertificationCourses courseDatabase={courseDatabase}/>
+        <PopularCourses />
+        <CertificationCourses />
         <InstructedCourses/>
         <Footer/>
       </main>

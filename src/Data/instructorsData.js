@@ -1,5 +1,4 @@
-export default {
-    "instructorData": [
+export default [
         {
             id: 0,
             name: "robert james",
@@ -37,4 +36,3 @@ export default {
             avatar: "/src/assets/Images/tutor-avatar.png"
         }
     ]
-}

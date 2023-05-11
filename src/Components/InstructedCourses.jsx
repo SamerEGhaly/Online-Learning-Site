@@ -1,7 +1,22 @@
 import Tutor from "./Tutor"
 import "/src/CSS/instructed-courses.css"
+import instructorsData from "/src/Data/instructorsData"
 
 function InstructedCourses(){
+
+    const tutorsList = instructorsData.map(item => {
+        return(
+            <Tutor 
+                key={item.id}
+                avatar={item.avatar}
+                name={item.name}
+                specialization={item.specialization}
+                no_of_courses={item.no_of_courses}
+                no_of_ratings={item.no_of_ratings}
+            />
+        )
+    })
+
     return(
         <section className="instructed-courses">
             <h2 id="instructed-courses-title">Instructed Courses</h2>
@@ -12,10 +27,7 @@ function InstructedCourses(){
             <div className="popular-tutors">
                 <h3 id="popular-tutors-title">Meet Our Popular Tutors</h3>
                 <div className="tutors">
-                    <Tutor/>
-                    <Tutor/>
-                    <Tutor/>
-                    <Tutor/>
+                    {tutorsList}
                 </div>
             </div>
         </section>

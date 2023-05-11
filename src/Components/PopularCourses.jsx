@@ -2,11 +2,12 @@ import React from "react"
 import Carousel from "./Carousel"
 import Course from "./Course"
 import "/src/CSS/popular-courses.css"
+import coursesDatabase from "/src/Data/courseData"
 
 
-function PopularCourses(props){
+function PopularCourses(){
 
-    const [listfilters, setListFilters] = React.useState({
+    const [listFilters, setListFilters] = React.useState({
       "courseLevelFilter" : "intermediate"
     })
 
@@ -84,16 +85,15 @@ function PopularCourses(props){
     }
     
     function getCarouselItems(){  // returns an array of items to be passed to the carousel component
-      const courseDatabase = props.courseDatabase
       var carouselItems = []
       var showCourse = false
       var item
-      for(let i = 0; i < courseDatabase.length; i++){
+      for(let i = 0; i < coursesDatabase.length; i++){
     
         showCourse = false
-        item = courseDatabase[i]
+        item = coursesDatabase[i]
     
-        if(listfilters["courseLevelFilter"] == item.level){
+        if(listFilters["courseLevelFilter"] == item.level){
           if(checkedBoxes.length > 0){
             if(booleanFilters["freeCoursesFilter"] && item.price == "free"){
               showCourse = true;
