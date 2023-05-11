@@ -69,7 +69,7 @@ export default {
             id: 5,
             title: "statistics",
             duration: "1hr 12mins",
-            price: "10.90",
+            price: "free",
             platform: "khan academy",
             stars: "4",
             no_of_ratings: "12434",

@@ -3,6 +3,7 @@ import Carousel from "./Carousel"
 import Course from "./Course"
 import "/src/CSS/popular-courses.css"
 
+
 function PopularCourses(props){
 
     const [listfilters, setListFilters] = React.useState({
@@ -16,13 +17,19 @@ function PopularCourses(props){
 
     const [sortValue, setSortValue] = React.useState("highestRating")
 
-    console.log(sortValue)
-
-    function handleSort(event){ // callback function that modifies the sortValue state
-      setSortValue(event.target.value)
+    function getCheckedBoxes(){ // loops over the booleanFilters state and returns an array of checked boxes names
+      var checkedBoxes = []
+      for (const key in booleanFilters) {
+        if (Object.hasOwnProperty.call(booleanFilters, key)) {
+          if(booleanFilters[key]){
+            checkedBoxes.push(key)
+          }
+        }
+      }
+      return checkedBoxes
     }
-
-    function sortCourses(){
+    
+    function sortCourses(){ // sorts the carouselItems array according to the sortValue state
       if(sortValue == "highestRating"){
         for(let i = 0; i < carouselItems.length; i++){
           for(let j = 0, k = 1; k < carouselItems.length - i; j++, k++){
@@ -50,20 +57,12 @@ function PopularCourses(props){
         }
       }
     }
-
-    function getCheckedBoxes(){
-      var checkedBoxes = []
-      for (const key in booleanFilters) {
-        if (Object.hasOwnProperty.call(booleanFilters, key)) {
-          if(booleanFilters[key]){
-            checkedBoxes.push(key)
-          }
-        }
-      }
-      return checkedBoxes
+    
+    function handleSort(event){ // callback function to handle sort list onChange events
+      setSortValue(event.target.value)
     }
-
-    function modifyBooleanFilters(event){
+    
+    function handleBooleanFilters(event){ //callback function to handle boolean filters onChange events
       const name = event.target.name
       setBooleanFilters(oldFilters => {
         return({
@@ -72,8 +71,8 @@ function PopularCourses(props){
         })
       })
     }
-
-    function modifyListFilters(event){
+    
+    function handleListFilters(event){ //callback function to handle list filters onChange events
       const name = event.target.name
       const value = event.target.value
       setListFilters(oldFilters => {
@@ -83,19 +82,17 @@ function PopularCourses(props){
         })
       })
     }
-
-    const checkedBoxes = getCheckedBoxes() // get a list of checked boxes names
     
-    function getCarouselItems(){
+    function getCarouselItems(){  // returns an array of items to be passed to the carousel component
       const courseDatabase = props.courseDatabase
       var carouselItems = []
       var showCourse = false
       var item
       for(let i = 0; i < courseDatabase.length; i++){
-
+    
         showCourse = false
         item = courseDatabase[i]
-
+    
         if(listfilters["courseLevelFilter"] == item.level){
           if(checkedBoxes.length > 0){
             if(booleanFilters["freeCoursesFilter"] && item.price == "free"){
@@ -112,7 +109,7 @@ function PopularCourses(props){
         else{
           showCourse = false;
         }
-  
+    
         if(showCourse){
           carouselItems.push(
           <Course 
@@ -130,9 +127,12 @@ function PopularCourses(props){
           )
         }
       } // end of for loop
-
+    
       return(carouselItems)
     }
+    
+
+    const checkedBoxes = getCheckedBoxes() // an array of checked boxes names
 
     const carouselItems = getCarouselItems()
 
@@ -142,18 +142,18 @@ function PopularCourses(props){
         <section className="popular-courses" aria-labelledby="popular-courses-title">
           <h2 id="popular-courses-title">Popular Courses</h2>
           <div className="popular-courses-filters">
-            <select onChange={modifyListFilters}  name="courseLevelFilter" id="course-level-filter" className="course-level-list list-filter">
+            <select onChange={handleListFilters}  name="courseLevelFilter" id="course-level-filter" className="course-level-list list-filter">
               <option value="beginner">Beginner</option>
               <option selected value="intermediate">Intermediate</option>
               <option value="advanced">Advanced</option>
             </select>
             <label htmlFor="free-courses-checkbox" className="checkbox-filter">
-              <input onChange={modifyBooleanFilters} type="checkbox" name="freeCoursesFilter" id="free-courses-checkbox" />
+              <input onChange={handleBooleanFilters} type="checkbox" name="freeCoursesFilter" id="free-courses-checkbox" />
               <div className="custom-checkbox"><img src="/src/assets/Images/white-checkmark.png" alt="checkmark" id="checkmark-image" /></div>
               Free Courses
             </label>
             <label htmlFor="paid-courses-checkbox" className="checkbox-filter">
-              <input onChange={modifyBooleanFilters} type="checkbox" name="paidCoursesFilter" id="paid-courses-checkbox" />
+              <input onChange={handleBooleanFilters} type="checkbox" name="paidCoursesFilter" id="paid-courses-checkbox" />
               <div className="custom-checkbox"><img src="/src/assets/Images/white-checkmark.png" alt="checkmark" id="checkmark-image" /></div>
               Paid Courses
             </label>
