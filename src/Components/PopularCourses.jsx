@@ -80,7 +80,15 @@ function PopularCourses(){
 }
 export default PopularCourses
 
-// sorts the carouselItems array according to the sortValue state
+/*
+  description: sorts the carouselItems array according to the sortValue state
+
+  inputs:
+    sortValue: value to sort the array by it
+    carouselItems: an array of the items to be sorted
+
+  return: none
+*/
 function sortItems(sortValue, carouselItems){
   if(sortValue == "highestRating"){
     for(let i = 0; i < carouselItems.length; i++){
@@ -110,7 +118,15 @@ function sortItems(sortValue, carouselItems){
   }
 }
 
-function getCheckedBoxes(booleanFilters){ // loops over the booleanFilters state and returns an array of checked boxes names
+/*
+  description: search for boolean filters that are checked or "true"
+
+  inputs:
+    booleanFilters: an object containing boolean filters and there values (true or false)
+  
+  return: an array of names of true boolean filters
+*/
+function getCheckedBoxes(booleanFilters){
   var checkedBoxes = []
   for (const key in booleanFilters) {
     if (Object.hasOwnProperty.call(booleanFilters, key)) {
@@ -122,8 +138,18 @@ function getCheckedBoxes(booleanFilters){ // loops over the booleanFilters state
   return checkedBoxes
 }
 
-// a function that takes three inputs: an array of listFilters, an array of checked boxes names, and the item we want to show or hide. Then returns true if item passes the filters and false otherwise.
-function showItem(listFilters, booleanFilters, checkedBoxes, item){
+/*
+  description: decides whether an item passes the filter to be shown on the carousel or not.
+
+  takes three inputs: 
+    listFilters: an object containing list filters and their values
+    booleanFilters: an object containing boolean filters and there values (true or false)
+    checkedBoxes: an array holding the names of boolean filters that are checked or "true"
+    item: the item to be filtered
+    
+  returns: true if the item passes the filters and false otherwise.
+*/
+function filterItem(listFilters, booleanFilters, checkedBoxes, item){
   if(listFilters["courseLevelFilter"] == item.level){
     if(checkedBoxes.length > 0){
       if(booleanFilters["freeCoursesFilter"] && item.price == "free"){
@@ -145,14 +171,24 @@ function showItem(listFilters, booleanFilters, checkedBoxes, item){
   }
 }
 
-// returns an array of items to be passed to the carousel component
+/*
+  description: gets a sorted and filtered array of items to be passed to the carousel component
+
+  inputs:
+    listFilters: an object containing list filters and their values
+    sortValue: sortValue: value to sort the array by it
+    checkedBoxes: an array holding the names of boolean filters that are checked or "true"
+    booleanFilters: an object containing boolean filters and there values (true or false)
+
+  return: an array of items passed to the carousel
+*/
 function getCarouselItems(listFilters, booleanFilters, checkedBoxes, sortValue){
   var carouselItems = []
   var item
   for(let i = 0; i < coursesDatabase.length; i++){
     item = coursesDatabase[i]
 
-    if(showItem(listFilters, booleanFilters, checkedBoxes, item)){
+    if(filterItem(listFilters, booleanFilters, checkedBoxes, item)){
       carouselItems.push(
       <Course 
         key={item.id}
