@@ -1,19 +1,64 @@
 .carousel{
-    padding: 2rem 5rem;
-    width: 100%;
-    overflow-x: scroll;
+    position: relative;
+    display: flex;
+    align-items: center;
     background-color: #F8F5F5;
     box-shadow: 1px 1px 10px 0px #00000040;
 }
 
-.carousel::-webkit-scrollbar{
+.carousel-items{
+    padding: 4rem 0;
+    margin: 0 4rem;
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.carousel-items::-webkit-scrollbar{
     display: none;
 }
 
 .container{
     min-width: min-content;
     display: flex;
-    justify-content: space-evenly;
-    gap: 100px;
-    padding: 2rem;
+    gap: 6.5rem;
 }
+
+.slide{
+    display: flex;
+    justify-content: space-between;
+}
+
+.scroll-left-button, .scroll-right-button{
+    background-color: #F8F5F5;
+    border: none;
+    padding: 1rem;
+    height: min-content;
+    width: min-content
+}
+
+.scroll-left-button{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: 1;
+}
+
+.scroll-right-button{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    z-index: 1;
+}
+
+.scroll-left-button:focus, .scroll-right-button:focus{
+    outline: none;
+}
+
+.left-arrow-icon, .right-arrow-icon{
+    display: block;
+    width: 1.5rem;
+}
+
+/* .scroll-left-button{
+    display: none;
+} */
