@@ -7,8 +7,37 @@ function Carousel(props){
 
     const [carouselWidth, setCarouselWidth] = React.useState()
     const [slideWidth, setSlideWidth] = React.useState()
-    
-    console.log("render")
+    const [buttonsDisplay, setButtonsDisplay] = React.useState({
+        left : false,
+        right : true
+    })
+
+    console.log(buttonsDisplay)
+    function handleCarouselScroll(){
+        const carouselNode = carouselItemsRef.current
+        console.log(carouselNode.scrollLeft)
+        console.log(carouselNode.offsetWidth)
+        console.log(carouselNode.scrollWidth)
+        var leftButtonDisplay
+        var rightButtonDisplay
+        if(carouselNode.scrollLeft > 0){
+            leftButtonDisplay = true
+        }
+        else{
+            leftButtonDisplay = false
+        }
+        if((carouselNode.scrollWidth - carouselNode.offsetWidth - carouselNode.scrollLeft) < 1){
+            rightButtonDisplay = false
+        }
+        else{
+            rightButtonDisplay = true
+        }
+        
+        setButtonsDisplay({
+            left : leftButtonDisplay,
+            right : rightButtonDisplay
+        })
+    }
 
     function handleCarouselResize(){
         console.log("resize")
@@ -69,15 +98,15 @@ function Carousel(props){
 
     return(
         <div className="carousel">
-            <button onClick={scrollLeft} className="scroll-left-button">
+            <button style={{display: buttonsDisplay.left? "block" : "none"}} onClick={scrollLeft} className="scroll-left-button">
                 <img src="/src/assets/Images/left-arrow.png" alt="left arrow" className="left-arrow-icon" />
             </button>
-            <div ref={carouselItemsRef} className="carousel-items">
+            <div onScroll={handleCarouselScroll} ref={carouselItemsRef} className="carousel-items">
                 <div className="container">
                     {createSlides(props.items, 3)}
                 </div>
             </div>
-            <button onClick={scrollRight} className="scroll-right-button">
+            <button style={{display: buttonsDisplay.right? "block" : "none"}} onClick={scrollRight} className="scroll-right-button">
                 <img src="/src/assets/Images/right-arrow.png" alt="right arrow" className="right-arrow-icon" />
             </button>
         </div>

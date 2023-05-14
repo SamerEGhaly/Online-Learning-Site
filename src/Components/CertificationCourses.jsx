@@ -131,19 +131,24 @@ function sortItems(sortValue, carouselItems){
   returns: true if the item passes the filters and false otherwise.
 */
 function filterItem(booleanFilters, checkedBoxes, item){
-  if(checkedBoxes.length > 0){
-    if(booleanFilters["freeCertificationsFilter"] && item.price == "free"){
-      return(true)
+  if(item.certified){
+    if(checkedBoxes.length > 0){
+      if(booleanFilters["freeCertificationsFilter"] && item.price == "free"){
+        return(true)
+      }
+      else if(booleanFilters["paidCertificationsFilter"] && item.price !="free"){
+        return(true)
+      }
+      else{
+        return(false)
+      }
     }
-    else if(booleanFilters["paidCertificationsFilter"] && item.price !="free"){
+    else {
       return(true)
-    }
-    else{
-      return(false)
     }
   }
-  else {
-    return(true)
+  else{
+    return(false)
   }
 }
 
